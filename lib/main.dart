@@ -1,28 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:lazyload_courses/courses_page.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:lazyload_courses/view_model/example_view_model.dart';
+import 'package:lazyload_courses/view/example_widget.dart';
+
 
 void main() {
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      builder: (context, child) => ResponsiveBreakpoints.builder(
-        child: child!,
-        breakpoints: [
-          const Breakpoint(start: 0, end: 450, name: MOBILE),
-          const Breakpoint(start: 451, end: 800, name: TABLET),
-          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-        ],
-      ),
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const CoursesPage(),
+      home:  ExampleWidget(model: ExamplePetViewModel()),
     );
   }
 }
